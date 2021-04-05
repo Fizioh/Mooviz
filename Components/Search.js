@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Button, TextInput } from 'react-native'
+import { StyleSheet, View, Button, TextInput } from 'react-native'
 
 class Search extends React.Component {
     render(){
@@ -12,7 +12,7 @@ class Search extends React.Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     textinput: {
         marginLeft: 5,
         marginRight: 5,
@@ -22,6 +22,6 @@ const styles = {
         paddingLeft: 5
     }
 
-}
+})
 
 export default Search
