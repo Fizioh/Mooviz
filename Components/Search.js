@@ -10,7 +10,7 @@ class Search extends React.Component {
                 <Button title="Rechercher" onPress={() => {}} />
                 <FlatList
                     data={films}
-                    renderItem={({item}) => <Text>{item.key}</Text>}
+                    renderItem={({item}) => <Text>{item.title}</Text>}
                 />
             </View>
         )
