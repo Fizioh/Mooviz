@@ -1,17 +1,17 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
 class FilmItem extends React.Component {
     render() {
         return (
-            <View style={StyleSheet.main_container}>
-                <Text style={StyleSheet.title_text}>Titre du film</Text>
+            <View style={styles.main_container}>
+                <Text style={styles.title_text}>Titre du film</Text>
             </View>
         )
     }
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
     main_container: {
         height: 190
     },
