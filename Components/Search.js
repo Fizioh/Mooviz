@@ -6,7 +6,7 @@ class Search extends React.Component {
     render(){
         return (
             <View style={styles.main_container}>
-                 <TextInput style={styles.texinput} placeholder='Titre du film'/>
+                 <TextInput style={styles.textinput} placeholder='Titre du film'/>
                 <Button title="Rechercher" onPress={() => {}} />
                 <FlatList
                     data={films}
