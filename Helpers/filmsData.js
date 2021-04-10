@@ -1,5 +1,5 @@
 
-export default films = [
+export default film = [
     {
        id:181808,
        vote_average:7.2,
