@@ -1,4 +1,5 @@
-const API_TOKEN = process.env.REACT_APP_API_KEY;
+
+const API_TOKEN = "b378aacdd49ce64fd098ba4cce6be755"
 
 export function getFilmsFromApiWithSearchedText (text) {
     const url = 'https://api.themoviedb.org/3/search/movie?api_key=' + API_TOKEN + '&language=fr&query=' + text
