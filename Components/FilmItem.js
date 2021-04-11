@@ -21,7 +21,7 @@ class FilmItem extends React.Component {
                       
 
                     <View style={styles.description_container}>
-                        <Text style={styles.description_text} numberOfLines={6}>{film.overview}</Text>
+                    <Text style={styles.description_text} numberOfLines={6}>{film.overview}</Text>
                     </View>
 
                     <View style={styles.date_container}>
@@ -29,7 +29,8 @@ class FilmItem extends React.Component {
                     </View>
 
                 </View>
-            </View>
+
+          </View>
         )
     }
 }
