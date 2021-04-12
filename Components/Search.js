@@ -8,6 +8,8 @@ class Search extends React.Component {
     constructor(props){
         super(props)
         this.searchedText = "" // Init de la donnée searchedText en dehors du state
+        this.page = 0 // Compteur de page courante
+        this.totalPages = 0 // Nombre de pages totales
         this.state = {
             films: [],
             isLoading: false
@@ -17,9 +19,10 @@ class Search extends React.Component {
     _loadFilms() {
         if(this.searchedText.length > 0) { // Seulement si le texte recherché n'est pas vide
             this.setState( { isLoading: true })
-            getFilmsFromApiWithSearchedText(this.searchedText).then(data => {
+            getFilmsFromApiWithSearchedText(this.searchedText, this.page+1).then(data => {
+                this.page = data.pagethis.totalPages = data.total_pages
                 this.setState({ 
-                    films: data.results,
+                    films:[...this.state.films, ...data.results],
                     isLoading: false
                 })
             })
@@ -54,6 +57,12 @@ class Search extends React.Component {
                     data={this.state.films}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({item}) => <FilmItem film={item}/>}
+                    onEndReachedThreshold={0.5}
+                    onEndReached={() => {
+                        if(this.page < this.totalPages){ // Vérification fin de pagination avant de charger + d'éléments
+                            this._loadFilms()
+                        }
+                    }}
                 />
                 {this._displayLoading()}
             </View>

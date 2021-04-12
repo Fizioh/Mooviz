@@ -2,9 +2,13 @@ import React from 'react'
 import { StyleSheet, View, Text, Image } from 'react-native'
 import { getImageFromApi } from '../API/TMDBApi'
 
+
+
 class FilmItem extends React.Component {
     render() {
         const film = this.props.film
+        
+        
         return (
             <View style={styles.main_container}>
 
@@ -12,6 +16,7 @@ class FilmItem extends React.Component {
                 style={styles.image}
                 source={{uri: getImageFromApi(film.poster_path)}}
                 />
+                
               
 
                 <View style={styles.content_container}>
@@ -26,9 +31,10 @@ class FilmItem extends React.Component {
                     </View>
 
                     <View style={styles.date_container}>
-                        <Text style={styles.date_text}>Sorti le {film.release_date}</Text>
+                        <Text style={styles.date_text}>Sorti le {providers}</Text>
+                        
                     </View>
-
+                    
                 </View>
 
           </View>
