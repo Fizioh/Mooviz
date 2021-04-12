@@ -31,7 +31,7 @@ class FilmItem extends React.Component {
                     </View>
 
                     <View style={styles.date_container}>
-                        <Text style={styles.date_text}>Sorti le {providers}</Text>
+                        <Text style={styles.date_text}>Sorti le {film.release_date}</Text>
                         
                     </View>
                     

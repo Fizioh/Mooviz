@@ -20,7 +20,8 @@ class Search extends React.Component {
         if(this.searchedText.length > 0) { // Seulement si le texte recherché n'est pas vide
             this.setState( { isLoading: true })
             getFilmsFromApiWithSearchedText(this.searchedText, this.page+1).then(data => {
-                this.page = data.pagethis.totalPages = data.total_pages
+                this.page = data.page
+                this.totalPages = data.total_pages
                 this.setState({ 
                     films:[...this.state.films, ...data.results],
                     isLoading: false
