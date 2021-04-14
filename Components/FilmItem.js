@@ -6,18 +6,18 @@ import { getImageFromApi } from '../API/TMDBApi'
 
 class FilmItem extends React.Component {
     render() {
-        const film = this.props.film
+        const {film, displayDetailForFilm }= this.props.film
         
         
         return (
-            <View style={styles.main_container}>
+            <TouchableOpacity 
+                style={styles.main_container} 
+                onPress={() => displayDetailForFilm(film.id)}>
 
                 <Image
                 style={styles.image}
                 source={{uri: getImageFromApi(film.poster_path)}}
                 />
-                
-              
 
                 <View style={styles.content_container}>
                     <View style={styles.header_container}>
@@ -37,7 +37,7 @@ class FilmItem extends React.Component {
                     
                 </View>
 
-          </View>
+          </TouchableOpacity>
         )
     }
 }
