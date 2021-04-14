@@ -53,6 +53,9 @@ class Search extends React.Component {
             this._loadFilms() 
         })
     }
+    _displayDetailForFilm = (idFilm) => {
+        console.log("Display film with id " +idFilm)
+    }
 
     render(){
         return (
