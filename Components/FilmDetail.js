@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from 'react-native'
 class FilmDetail extends React.Component {
     render() {
         return(
-            < View style={styles.main.container}>
+            <View style={styles.main_container}>
                 <Text>Détail du film</Text>
             </View>
         )

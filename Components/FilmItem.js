@@ -1,12 +1,12 @@
 import React from 'react'
-import { StyleSheet, View, Text, Image } from 'react-native'
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native'
 import { getImageFromApi } from '../API/TMDBApi'
 
 
 
 class FilmItem extends React.Component {
     render() {
-        const {film, displayDetailForFilm }= this.props.film
+        const {film, displayDetailForFilm }= this.props
         
         
         return (
