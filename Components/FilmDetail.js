@@ -33,15 +33,12 @@ import { StyleSheet, View, ActivityIndicator } from 'react-native'
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
+        justifyContent: 'center'
     },
     loading_container: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        alignItems: 'center',
-        justifyContent: 'center'
+        flexDirection: 'row',
+        padding: 10,
+        justifyContent: 'space-around'
     }
 })
 
