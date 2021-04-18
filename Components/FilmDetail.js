@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, View, ActivityIndicator, ScrollView } from 'react-native'
-import { getFilmDetailFromApi } from '../API/TMDBApi'
+import { StyleSheet, View, ActivityIndicator, ScrollView, Text, Image } from 'react-native'
+import { getFilmDetailFromApi, getImageFromApi } from '../API/TMDBApi'
 
         class FilmDetail extends React.Component {
 
@@ -35,7 +35,16 @@ import { getFilmDetailFromApi } from '../API/TMDBApi'
             if(this.state.film != undefined){
                 return(
                     <ScrollView style={styles.scrollview_container}>
-                        <Text>{this.state.film.title}</Text>
+                        <Image 
+                        style ={styles.image}
+                        source={{uri: getImageFromApi(this.state.film.backdrop_path)}}
+                        />
+                        <Text style={styles.text_title}>{this.state.film.title}</Text>
+                        <Text numberOfLines={15}>{this.state.film.overview}</Text>
+                        <Text>Sorti le : {this.state.film.release_date}</Text>
+                        <Text>Note : {this.state.film.vote_average}/10</Text>
+                        <Text>Budget: {this.state.film.budget}</Text>
+                        <Text>Genre(s): {this.state.film.genres.name}</Text>
                     </ScrollView>
                 )
             }
@@ -62,6 +71,16 @@ const styles = StyleSheet.create({
     },
     scrollview_container:{
         flex: 1
+    },
+    image: {
+        width: 500,
+        height: 150,
+        justifyContent: 'center'
+    },
+    text_title: {
+        fontSize: 19,
+        fontWeight: 'bold',
+        textAlign: 'center'
     }
 })
 
