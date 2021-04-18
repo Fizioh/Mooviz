@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View, ActivityIndicator } from 'react-native'
+import { StyleSheet, View, ActivityIndicator, ScrollView } from 'react-native'
 import { getFilmDetailFromApi } from '../API/TMDBApi'
 
         class FilmDetail extends React.Component {
@@ -12,6 +12,15 @@ import { getFilmDetailFromApi } from '../API/TMDBApi'
                 }
             }
 
+        componentDidMount(){
+            getFilmDetailFromApi(this.props.navigation.state.params.idFilm).then(data => {
+                this.setState({
+                    film: data,
+                    isLoading: false
+                })
+            })
+        }
+
         _displayLoading(){
             if(this.state.isLoading){
                 return (
@@ -22,19 +31,21 @@ import { getFilmDetailFromApi } from '../API/TMDBApi'
             }
         }
 
-        componentDidMount(){
-            getFilmDetailFromApi(this.props.navigation.state.params.idFilm).then(data => {
-                this.setState({
-                    film: data,
-                    isLoading: false
-                })
-            })
+        _displayFilm(){
+            if(this.state.film != undefined){
+                return(
+                    <ScrollView style={styles.scrollview_container}>
+                        <Text>{this.state.film.title}</Text>
+                    </ScrollView>
+                )
+            }
         }
 
     render() {
         return(
             <View style={styles.main_container}>
                     {this._displayLoading()}
+                    {this._displayFilm()}
             </View>
         )
     }
@@ -42,13 +53,15 @@ import { getFilmDetailFromApi } from '../API/TMDBApi'
 
 const styles = StyleSheet.create({
     main_container: {
-        flex: 1,
-        justifyContent: 'center'
+        flex: 1
     },
     loading_container: {
         flexDirection: 'row',
         padding: 10,
-        justifyContent: 'space-around'
+        justifyContent: 'center'
+    },
+    scrollview_container:{
+        flex: 1
     }
 })
 
