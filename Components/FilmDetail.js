@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, View, ActivityIndicator } from 'react-native'
+import { getFilmDetailFromApi } from '../API/TMDBApi'
 
         class FilmDetail extends React.Component {
 
@@ -19,6 +20,15 @@ import { StyleSheet, View, ActivityIndicator } from 'react-native'
                     </View>
                 )
             }
+        }
+
+        componentDidMount(){
+            getFilmDetailFromApi(this.props.navigation.state.params.idFilm).then(data => {
+                this.setState({
+                    film: data,
+                    isLoading: false
+                })
+            })
         }
 
     render() {
