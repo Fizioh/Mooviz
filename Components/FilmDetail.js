@@ -15,7 +15,7 @@ import { StyleSheet, View, ActivityIndicator } from 'react-native'
             if(this.state.isLoading){
                 return (
                     <View style={styles.loading_container}>
-                        <ActivityIndicator size='large' />
+                        <ActivityIndicator size='large' color='#0000ff' />
                     </View>
                 )
             }
