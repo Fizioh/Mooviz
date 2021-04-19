@@ -1,6 +1,8 @@
 import React from 'react'
 import { StyleSheet, View, ActivityIndicator, ScrollView, Text, Image } from 'react-native'
-import { getFilmDetailFromApi, getImageFromApi } from '../API/TMDBApi'
+import { getFilmDetailFromApi, getImageFromApi, getWatchProviders } from '../API/TMDBApi'
+import moment from 'moment'
+import numeral from 'numeral'
 
         class FilmDetail extends React.Component {
 
@@ -32,19 +34,28 @@ import { getFilmDetailFromApi, getImageFromApi } from '../API/TMDBApi'
         }
 
         _displayFilm(){
+            const { film} = this.state
             if(this.state.film != undefined){
                 return(
                     <ScrollView style={styles.scrollview_container}>
                         <Image 
                         style ={styles.image}
-                        source={{uri: getImageFromApi(this.state.film.backdrop_path)}}
+                        source={{uri: getImageFromApi(film.backdrop_path)}}
                         />
-                        <Text style={styles.text_title}>{this.state.film.title}</Text>
-                        <Text numberOfLines={15}>{this.state.film.overview}</Text>
-                        <Text>Sorti le : {this.state.film.release_date}</Text>
-                        <Text>Note : {this.state.film.vote_average}/10</Text>
-                        <Text>Budget: {this.state.film.budget}</Text>
-                        <Text>Genre(s): {this.state.film.genres.name}</Text>
+                        <Text style={styles.title_text}>{film.title}</Text>
+                        <Text style={styles.description_text}>{film.overview}</Text>
+                        <Text style={styles.default_text}>Sorti le : {moment(new Date(film.release_date)).format('DD/MM/YYYY')}</Text>
+                        <Text style={styles.default_text}>Note : {film.vote_average} / 10</Text>
+                        <Text style={styles.default_text}>Nombre de votes : {film.vote_count}</Text>
+                        <Text style={styles.default_text}>Budget : {numeral(film.budget).format('0,0[.]00 $')}</Text>
+                        <Text>Genre(s) : {film.genres.map(function(genre){
+                            return genre.name;
+                            }).join(" / ")}
+                        </Text >
+                        <Text style={styles.default_text}> Compagnie(s) : {film.production_companies.map(function(company){
+                            return company.name;
+                        }).join(" / ")}
+                        </Text>
                     </ScrollView>
                 )
             }
@@ -62,26 +73,47 @@ import { getFilmDetailFromApi, getImageFromApi } from '../API/TMDBApi'
 
 const styles = StyleSheet.create({
     main_container: {
-        flex: 1
+      flex: 1
     },
     loading_container: {
-        flexDirection: 'row',
-        padding: 10,
-        justifyContent: 'center'
+      position: 'absolute',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      alignItems: 'center',
+      justifyContent: 'center'
     },
-    scrollview_container:{
-        flex: 1
+    scrollview_container: {
+      flex: 1
     },
     image: {
-        width: 500,
-        height: 150,
-        justifyContent: 'center'
+      height: 169,
+      margin: 5
     },
-    text_title: {
-        fontSize: 19,
-        fontWeight: 'bold',
-        textAlign: 'center'
+    title_text: {
+      fontWeight: 'bold',
+      fontSize: 35,
+      flex: 1,
+      flexWrap: 'wrap',
+      marginLeft: 5,
+      marginRight: 5,
+      marginTop: 10,
+      marginBottom: 10,
+      color: '#000000',
+      textAlign: 'center'
+    },
+    description_text: {
+      fontStyle: 'italic',
+      color: '#666666',
+      margin: 5,
+      marginBottom: 15
+    },
+    default_text: {
+      marginLeft: 5,
+      marginRight: 5,
+      marginTop: 5,
     }
-})
+  })
 
 export default FilmDetail
