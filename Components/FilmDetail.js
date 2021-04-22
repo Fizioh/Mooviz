@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, View, ActivityIndicator, ScrollView, Text, Image } from 'react-native'
-import { getFilmDetailFromApi, getImageFromApi, getWatchProviders } from '../API/TMDBApi'
+import { StyleSheet, View, ActivityIndicator, ScrollView, Text, Image, TouchableOpacity } from 'react-native'
+import { getFilmDetailFromApi, getImageFromApi } from '../API/TMDBApi'
 import moment from 'moment'
 import numeral from 'numeral'
 import { connect } from 'react-redux'
@@ -26,6 +26,11 @@ import { connect } from 'react-redux'
             })
         }
 
+        componentDidUpdate(){
+            console.log("component did update : ")
+            console.log(this.props.favoritesFilm)
+        }
+
         _displayLoading(){
             if(this.state.isLoading){
                 return (
@@ -34,6 +39,11 @@ import { connect } from 'react-redux'
                     </View>
                 )
             }
+        }
+
+        _toggleFavorite(){
+            const action = { type: "TOGGLE_FAVORITE", value: this.state.film }
+            this.props.dispatch(action)
         }
 
         _displayFilm(){
@@ -46,6 +56,11 @@ import { connect } from 'react-redux'
                         source={{uri: getImageFromApi(film.backdrop_path)}}
                         />
                         <Text style={styles.title_text}>{film.title}</Text>
+                        <TouchableOpacity
+                            style={styles.favorite_container}
+                            onPress={() => this._toggleFavorite()}>
+                                {this._displayFavoriteImage()}
+                        </TouchableOpacity>
                         <Text style={styles.description_text}>{film.overview}</Text>
                         <Text style={styles.default_text}>Sorti le : {moment(new Date(film.release_date)).format('DD/MM/YYYY')}</Text>
                         <Text style={styles.default_text}>Note : {film.vote_average} / 10</Text>
@@ -107,6 +122,9 @@ const styles = StyleSheet.create({
       color: '#000000',
       textAlign: 'center'
     },
+    favorite_container:{
+        alignItems: 'center',
+    },
     description_text: {
       fontStyle: 'italic',
       color: '#666666',
@@ -127,4 +145,5 @@ const styles = StyleSheet.create({
         favoritesFilm: state.favoritesFilm
      }
 }
+
 export default connect(mapStateToProps)(FilmDetail)
