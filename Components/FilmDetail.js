@@ -46,6 +46,19 @@ import { connect } from 'react-redux'
             this.props.dispatch(action)
         }
 
+        _displayFavoriteImage(){
+            var sourceImage = require('../Images/nofavorite.png')
+            if(this.props.favoritesFilm.findIndex(item => item.id === this.state.film.id) !== -1){
+                sourceImage = require('../Images/favorite.png')
+            }
+            return(
+                <Image 
+                    style={styles.favorite_image}
+                    source={sourceImage}
+                />
+            )
+        }
+
         _displayFilm(){
             const { film} = this.state
             if(this.state.film != undefined){

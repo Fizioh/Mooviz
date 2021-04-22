@@ -58,6 +58,8 @@ class Search extends React.Component {
         this.props.navigation.navigate("FilmDetail",  {idFilm: idFilm})
     }
 
+    
+
     render(){
         return (
             <View style={styles.main_container}>
