@@ -2,6 +2,7 @@ import React from 'react'
 import { ActivityIndicator, StyleSheet, View, Button, TextInput, FlatList} from 'react-native'
 import FilmItem from './FilmItem'
 import { getFilmsFromApiWithSearchedText } from '../API/TMDBApi'
+import { connect } from 'react-redux'
 
 class Search extends React.Component {
 
@@ -57,6 +58,7 @@ class Search extends React.Component {
         console.log("Display film with id " +idFilm)
         this.props.navigation.navigate("FilmDetail",  {idFilm: idFilm})
     }
+    
 
     
 
@@ -73,8 +75,16 @@ class Search extends React.Component {
                 <Button title="Rechercher" onPress={() => this._searchFilms()} />
                 <FlatList
                     data={this.state.films}
+                    extraData={this.props.favoritesFilm}
+                    //On utilise la prop extraData pour indiquer à FlatList que d'autres données doivent tere prises en compte si on le demande un re-render
                     keyExtractor={(item) => item.id.toString()}
-                    renderItem={({item}) => <FilmItem film={item} displayDetailForFilm={this._displayDetailForFilm} />}
+                    renderItem={({item}) => 
+                    <FilmItem 
+                        film={item} 
+                        //Ajout d'une prop isFilmFavorite pour undiquer à l'item d'afficher l'icone ou non
+                        isFilmFavorite={(this.props.favoritesFilm.findIndex(film => film.id === item.id) !== -1) ? true : false}
+                        displayDetailForFilm={this._displayDetailForFilm} 
+                        />}
                     onEndReachedThreshold={0.5}
                     onEndReached={() => {
                         if(this.page < this.totalPages){ // Vérification fin de pagination avant de charger + d'éléments
@@ -113,5 +123,12 @@ const styles = StyleSheet.create({
 
 })
 
+// On connecte le store Redux ainsi que les films favoris du state de notre app à notre component Search
+const mapStateToProps = state => {
+    return {
+        favoritesFilm: state.favoritesFilm
+    }
+}
 
-export default Search
+
+export default connect(mapStateToProps)(Search)

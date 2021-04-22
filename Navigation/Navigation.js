@@ -1,5 +1,5 @@
-import {createStackNavigator} from 'react-navigation-stack'
-import { createAppContainer } from 'react-navigation'
+import {createStackNavigator } from 'react-navigation-stack'
+import { createAppContainer, createBottomTabNavigator } from 'react-navigation'
 import Search from '../Components/Search'
 import FilmDetail from '../Components/FilmDetail'
 
@@ -16,4 +16,10 @@ const SearchStackNavigator = createStackNavigator({
     
 })
 
-export default createAppContainer(SearchStackNavigator)
+const MoviesTabNavigator = createBottomTabNavigator({
+    Search: {
+        screen: SearchStackNavigator
+    }
+})
+
+export default createAppContainer(MoviesTabNavigator)
