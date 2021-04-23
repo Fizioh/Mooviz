@@ -18,6 +18,15 @@ import { connect } from 'react-redux'
             }
 
         componentDidMount(){
+            const favoriteFilmIndex = this.props.favoritesFilm.findIndex(item => item.id === this.props.navigation.state.params.idFilm)
+            if(favoriteFilmIndex !== -1){ // Film déjà dans nos favoris pas besoin d'appeller l'API ici on ajoute le detail stocké dans notre state global au state du component
+                this.setState({
+                    film: this.props.favoritesFilm[favoriteFilmIndex]
+                })
+                return
+            }
+            // Le film n'est pas dans nos fav on n'a pas sond étail on appelle l'API pour le récuperer
+            this.setState({ isLoading: true })
             getFilmDetailFromApi(this.props.navigation.state.params.idFilm).then(data => {
                 this.setState({
                     film: data,
@@ -26,10 +35,7 @@ import { connect } from 'react-redux'
             })
         }
 
-        componentDidUpdate(){
-            console.log("component did update : ")
-            console.log(this.props.favoritesFilm)
-        }
+        
 
         _displayLoading(){
             if(this.state.isLoading){
@@ -60,8 +66,8 @@ import { connect } from 'react-redux'
         }
 
         _displayFilm(){
-            const { film} = this.state
-            if(this.state.film != undefined){
+            const { film } = this.state
+            if(film != undefined){
                 return(
                     <ScrollView style={styles.scrollview_container}>
                         <Image 
@@ -79,7 +85,7 @@ import { connect } from 'react-redux'
                         <Text style={styles.default_text}>Note : {film.vote_average} / 10</Text>
                         <Text style={styles.default_text}>Nombre de votes : {film.vote_count}</Text>
                         <Text style={styles.default_text}>Budget : {numeral(film.budget).format('0,0[.]00 $')}</Text>
-                        <Text>Genre(s) : {film.genres.map(function(genre){
+                        <Text style={styles.default_text}>Genre(s) : {film.genres.map(function(genre){
                             return genre.name;
                             }).join(" / ")}
                         </Text >
