@@ -79,19 +79,20 @@ const styles = StyleSheet.create({
         fontSize: 18,
         flex: 1,
         flexWrap: 'wrap',
-        paddingRight: 5
+        paddingRight: 5,
+        color: '#3CE0CC'
     },
     vote_text: {
         fontWeight: 'bold',
         fontSize: 26,
-        color: '#666666'
+        color: '#79D3F0'
     },
     description_container: {
         flex: 7
     },
     description_text: {
         fontStyle: 'italic',
-        color: '#666666'
+        color: '#79D3F0'
     },
     date_container: {
         flex: 1

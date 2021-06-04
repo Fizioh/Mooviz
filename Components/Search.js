@@ -73,7 +73,7 @@ class Search extends React.Component {
                  onEndEditing={() => this._searchFilms()}
                  onEndSubmitEditing={() => this._searchFilms()}
                 />
-                <Button title="Rechercher" onPress={() => this._searchFilms()} />
+                <Button title="Rechercher"   color="#3CE0CC" onPress={() => this._searchFilms()} />
                  <FilmList
                  films={this.state.films}
                  navigation={this.props.navigation}
@@ -93,12 +93,13 @@ const styles = StyleSheet.create({
         flex: 1
     },
     textinput: {
-        marginLeft: 5,
-        marginRight: 5,
+        fontWeight: 'bold',
         height: 50,
-        borderColor: '#000000',
+        borderColor: '#3CE0CC',
         borderWidth: 1,
-        paddingLeft: 5
+        paddingLeft: 10,
+        color: '#3CE0CC',
+        backgroundColor: 'white'
     },
     loading_container: {
         position: 'absolute',

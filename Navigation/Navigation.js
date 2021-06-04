@@ -11,7 +11,11 @@ const SearchStackNavigator = createStackNavigator({
     Search: {
         screen: Search,
         navigationOptions: {
-            title: 'Rechercher'
+            title: 'Mooviz',
+            headerTitleStyle: {
+                textAlign: 'center',
+              },
+              headerTintColor: '#3CE0CC',
         }
     },
     FilmDetail: {
@@ -59,8 +63,8 @@ const MoviesTabNavigator = createBottomTabNavigator({
 },
     {
         tabBarOptions: {
-            activeBackgroundColor: '#DDDDDD', // Couleur arrière plan de l'onglet selectionné
-            inactiveBackgroundColor: '#FFFFFF', // Arrière plan onglet non select
+            activeBackgroundColor: '#FFFFFF', // Couleur arrière plan de l'onglet selectionné
+            inactiveBackgroundColor: '#3CE0CC', // Arrière plan onglet non select
             showLabel: false, // On masque les titres
             showIcon: true // On informe le TabNavigator qu'on souhaite afficher les icones définies
         }

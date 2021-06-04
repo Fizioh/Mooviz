@@ -28,6 +28,7 @@ class FilmList extends React.Component {
             renderItem={({item}) => (
                 <FilmItem
                 film={item}
+                style={styles.item}
                 isFilmFavorite={(this.props.favoritesFilm.findIndex(film => film.id === item.id) !== -1) ? true : false }
                 displayDetailForFilm={this._displayDetailForFilm}
                 />
@@ -45,7 +46,11 @@ class FilmList extends React.Component {
 
 const styles= StyleSheet.create({
     list: {
-        flex: 1
+        flex: 1,
+        backgroundColor: 'black',
+    },
+    item: {
+        color: 'blue',
     }
 })
 
