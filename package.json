@@ -28,7 +28,9 @@
     "react-navigation-stack": "^2.10.4",
     "react-navigation-tabs": "^2.11.0",
     "react-redux": "^7.2.3",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "expo-auth-session": "~3.0.0",
+    "expo-random": "~10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"

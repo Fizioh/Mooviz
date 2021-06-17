@@ -1,11 +1,13 @@
 import React from 'react'
 import {StyleSheet, Image} from 'react-native'
-import { createStackNavigator } from 'react-navigation-stack'
+import { createStackNavigator, createSwitchNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createAppContainer } from 'react-navigation'
 import Search from '../Components/Search'
 import FilmDetail from '../Components/FilmDetail'
 import Favorites from '../Components/Favorites'
+import SignInScreen from '../Components/SignInScreen'
+
 
 const SearchStackNavigator = createStackNavigator({
     Search: {
@@ -24,11 +26,32 @@ const SearchStackNavigator = createStackNavigator({
     
 })
 
+const AuthStack = createStackNavigator({ 
+    Auth: {
+        screen: SignInScreen,
+        navigationOptions: {
+            title: 'Connexion',
+            headerTitleStyle: {
+                textAlign: 'center',
+              },
+              headerTintColor: '#3CE0CC',
+        }
+    },
+ });
+
+
+
+
+
 const FavoritesStackNavigator = createStackNavigator({
     Favorites: {
         screen: Favorites,
         navigationOptions: {
-            title: 'Favoris'
+            title: 'Favoris',
+            headerTitleStyle: {
+                textAlign: 'center',
+              },
+              headerTintColor: '#3CE0CC',
         }
     },
     FilmDetail: {
@@ -59,7 +82,19 @@ const MoviesTabNavigator = createBottomTabNavigator({
                 />
             }
         }
-    }
+    },
+
+    Auth: {
+        screen: AuthStack,
+        navigationOptions: {
+            tabBarIcon: () => {
+                return <Image
+                    source={require('../Images/user.png')}
+                    style={styles.icon}
+                />
+            }
+        }
+    },
 },
     {
         tabBarOptions: {

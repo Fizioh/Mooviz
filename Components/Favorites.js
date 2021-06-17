@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text } from 'react-native'
+import { StyleSheet } from 'react-native'
 import FilmList from './FilmList'
 import { connect } from 'react-redux'
 
