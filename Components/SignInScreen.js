@@ -16,8 +16,24 @@ class SignInScreen extends React.Component {
     render() {
       return (
           <View style={styles.container}>
+              <View style={styles.form}>
                 <Text style={styles.header}>Pseudo</Text>
-              <Button title="Connexion" ></Button>
+
+                <TextInput
+                  style={styles.input}
+                  placeholder=" Entrez votre identifiant"
+
+                />
+                <Text style={styles.header}>Mot de passe</Text>
+
+                <TextInput
+                  style={styles.input}
+                  placeholder=" Entrez votre mot de passe"
+                  keyboardType="numeric"
+                />
+                <Text style={styles.inscription}>Pas encore inscrit ? <Text style={styles.bluetext}>Inscrivez-vous</Text> </Text>
+                </View>
+              <Button color="#3CE0CC" title="Connexion" ></Button>
         </View>
       );
     }
@@ -29,13 +45,32 @@ class SignInScreen extends React.Component {
     container: {
       flex: 1,
       paddingTop: 45,
-      backgroundColor: '#F5FCFF',
+      backgroundColor: 'black',
+    },
+    form: {
+      marginBottom: 30
     },
     header: {
-      fontSize: 25,
+      fontSize: 20,
       textAlign: 'center',
-      margin: 10,
+      color: 'white',
+      margin: 15,
       fontWeight: 'bold'
+    },
+    input: {
+      height: 40,
+      margin: 10,
+      paddingBottom: 10,
+      borderWidth: 1,
+      borderColor: "#3CE0CC",
+      opacity: 0.5,
+      borderRadius: 15
+    },
+    inscription: {
+      color: 'grey'
+    },
+    bluetext: {
+      color: "#3CE0CC",
     }
   });
 
