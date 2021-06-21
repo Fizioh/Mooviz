@@ -4,13 +4,15 @@
 <table>
   <tr>
     <td align="center">Search page</td>
+     <td align="center">Details</td>
      <td align="center">Favoris</td>
      <td align="center">User page</td>
   </tr>
   <tr>
-    <td><img src="https://user-images.githubusercontent.com/54205753/122545607-52bb1f00-d02e-11eb-84ac-db8d2c87d3fe.jpg" width=270 height=480></td>
-    <td><img src="https://user-images.githubusercontent.com/54205753/122545595-4f279800-d02e-11eb-8520-42974c74de84.jpg" width=270 height=480></td>
-    <td><img src="https://user-images.githubusercontent.com/54205753/122545623-56e73c80-d02e-11eb-803e-e2b8a404c04e.jpg" width=270 height=480></td>
+    <td><img src="https://user-images.githubusercontent.com/54205753/122545607-52bb1f00-d02e-11eb-84ac-db8d2c87d3fe.jpg" width=200 height=400></td>
+    <td><img src="https://user-images.githubusercontent.com/54205753/122752434-3f5bbe00-d291-11eb-893a-d1138837efcf.jpg" width=200 height=400></td>
+    <td><img src="https://user-images.githubusercontent.com/54205753/122545595-4f279800-d02e-11eb-8520-42974c74de84.jpg" width=200 height=400></td>
+    <td><img src="https://user-images.githubusercontent.com/54205753/122545623-56e73c80-d02e-11eb-803e-e2b8a404c04e.jpg" width=200 height=400></td>
   </tr>
  </table> 
 </div>
