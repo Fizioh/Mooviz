@@ -55,7 +55,7 @@ import { connect } from 'react-redux'
         _displayFavoriteImage(){
             var sourceImage = require('../Images/nofavorite.png')
             if(this.props.favoritesFilm.findIndex(item => item.id === this.state.film.id) !== -1){
-                sourceImage = require('../Images/favorite.png')
+                sourceImage = require('../Images/custom.png')
             }
             return(
                 <Image 
@@ -111,7 +111,8 @@ import { connect } from 'react-redux'
 
 const styles = StyleSheet.create({
     main_container: {
-      flex: 1
+      flex: 1,
+      backgroundColor: 'black',
     },
     loading_container: {
       position: 'absolute',
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
       marginRight: 5,
       marginTop: 10,
       marginBottom: 10,
-      color: '#000000',
+      color: 'white',
       textAlign: 'center'
     },
     favorite_container:{
@@ -146,14 +147,15 @@ const styles = StyleSheet.create({
     },
     description_text: {
       fontStyle: 'italic',
-      color: '#666666',
-      margin: 5,
+      color: 'grey',
+      margin: 13,
       marginBottom: 15
     },
     default_text: {
       marginLeft: 5,
       marginRight: 5,
       marginTop: 5,
+      color: 'white'
     }
   })
 
